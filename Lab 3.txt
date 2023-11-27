@@ -1,0 +1,22 @@
+using Azure.Storage;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using System;
+using System.Threading.Tasks;    
+public class Program
+{
+    //Update the blobServiceEndpoint value that you recorded previously in this lab.        
+    private const string blobServiceEndpoint = "<primary-blob-service-endpoint>";
+
+    //Update the storageAccountName value that you recorded previously in this lab.
+    private const string storageAccountName = "<storage-account-name>";
+
+    //Update the storageAccountKey value that you recorded previously in this lab.
+    private const string storageAccountKey = "<key>";    
+
+
+    //The following code to create a new asynchronous Main method
+    public static async Task Main(string[] args)
+    { 
+    }
+}

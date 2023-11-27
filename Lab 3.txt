@@ -18,5 +18,25 @@ public class Program
     //The following code to create a new asynchronous Main method
     public static async Task Main(string[] args)
     { 
+	    //The following line of code to create a new instance of the StorageSharedKeyCredential class by using the storageAccountName and storageAccountKey constants as constructor parameters
+		StorageSharedKeyCredential accountCredentials = new StorageSharedKeyCredential(storageAccountName, storageAccountKey);
+		
+		//The following line of code to create a new instance of the BlobServiceClient class by using the blobServiceEndpoint constant and the accountCredentials variable as constructor parameters
+		BlobServiceClient serviceClient = new BlobServiceClient(new Uri(blobServiceEndpoint), accountCredentials);
+
+		//The following line of code to invoke the GetAccountInfoAsync method of the BlobServiceClient class to retrieve account metadata from the service
+		AccountInfo info = await serviceClient.GetAccountInfoAsync();
+
+		//Render a welcome message
+		await Console.Out.WriteLineAsync($"Connected to Azure Storage Account");
+
+		//Render the storage account's name
+		await Console.Out.WriteLineAsync($"Account name:\t{storageAccountName}");
+
+		//Render the type of storage account
+		await Console.Out.WriteLineAsync($"Account kind:\t{info?.AccountKind}");
+
+		//Render the currently selected stock keeping unit (SKU) for the storage account
+		await Console.Out.WriteLineAsync($"Account sku:\t{info?.SkuName}");
     }
 }
